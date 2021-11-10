@@ -24,6 +24,9 @@ namespace E_Commerce_App.Controllers
         {
             _logger.LogInformation("Home!");
             List<Category> categories = await categoryRepository.GetAll();
+
+            List<Category> newCategories = await categoryRepository.GetNew(5);
+
             return View(categories);
         }
 

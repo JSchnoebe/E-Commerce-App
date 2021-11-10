@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using E_Commerce_App.Data;
 using E_Commerce_App.Models;
@@ -29,6 +30,14 @@ namespace E_Commerce_App.Controllers
                 new Category { Id = 3, Name = "Toys" },
             };
             //return await _context.Categories.ToListAsync();
+        }
+
+        public async Task<List<Category>> GetNew(int count)
+        {
+            return await _context.Categories
+                .OrderByDescending(f => f.Id) // Sort newest to oldest
+                .Take(count)
+                .ToListAsync();
         }
     }
 }
