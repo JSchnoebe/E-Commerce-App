@@ -10,6 +10,7 @@ namespace E_Commerce_App.Controllers
     public interface ICategoryRepository
     {
         Task<List<Category>> GetAll();
+        Task<List<Category>> GetNew(int count);
     }
 
     public class DatabaseCategoryRepository : ICategoryRepository
