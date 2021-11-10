@@ -11,17 +11,20 @@ namespace E_Commerce_App.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ICategoryRepository categoryRepository;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ICategoryRepository categoryRepository, ILogger<HomeController> logger)
         {
+            this.categoryRepository = categoryRepository;
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             _logger.LogInformation("Home!");
-            return View();
+            List<Category> categories = await categoryRepository.GetAll();
+            return View(categories);
         }
 
         [HttpGet("PrivacyPolicy")]
