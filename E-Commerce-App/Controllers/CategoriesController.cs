@@ -34,6 +34,7 @@ namespace E_Commerce_App.Controllers
             }
 
             var category = await _context.Categories
+                .Include(f => f.Products)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (category == null)
             {
