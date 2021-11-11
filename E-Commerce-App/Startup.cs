@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using E_Commerce_App.Controllers;
 using E_Commerce_App.Data;
+using E_Commerce_App.Services.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,6 +32,14 @@ namespace E_Commerce_App
 
             services.AddDbContext<ECommerceDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services
+                .AddIdentity<IdentityUser, IdentityRole>(options =>
+                {
+                    options.User.RequireUniqueEmail = true;
+                })
+                .AddEntityFrameworkStores<ECommerceDbContext>(); // where are users stored?
+            services.AddScoped<IUserService, IdentityUserService>();
 
             services.AddScoped<ICategoryRepository, DatabaseCategoryRepository>();
 
