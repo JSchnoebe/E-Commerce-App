@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace E_Commerce_App.Models
@@ -10,5 +11,7 @@ namespace E_Commerce_App.Models
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
+
+        public List<Product> Products { get; set; }
     }
 }
