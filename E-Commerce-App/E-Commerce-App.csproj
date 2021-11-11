@@ -17,6 +17,7 @@
     <None Remove="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
     <None Remove="Models\Identity\" />
     <None Remove="Services\Identity\" />
+    <None Remove="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.12">
@@ -35,5 +36,6 @@
     <Folder Include="Views\Product\" />
     <Folder Include="Models\Identity\" />
     <Folder Include="Services\Identity\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
 </Project>
