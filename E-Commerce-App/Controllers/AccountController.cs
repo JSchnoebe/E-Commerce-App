@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DemoMvc.Services;
 using E_Commerce_App.Models.Identity;
 using E_Commerce_App.Services.Identity;
 using Microsoft.AspNetCore.Authorization;
@@ -72,10 +73,14 @@ namespace E_Commerce_App.Controllers
             return View(data);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> UploadProfile(IFormFile profileImage)
         {
             string url = await fileUploadService.Upload(profileImage);
+
+            await userService.SetProfileImage(User, url);
+
             return RedirectToAction(nameof(Index));
         }
     }

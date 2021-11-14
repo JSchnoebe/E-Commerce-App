@@ -46,7 +46,7 @@ namespace E_Commerce_App
 
             services.AddScoped<IDashboardRepository, DashboardRepository>();
 
-            services.AddSingleton<IFileUploadService, JarenFileUploadService>();
+            services.AddSingleton<IFileUploadService, AzureFileUploadService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

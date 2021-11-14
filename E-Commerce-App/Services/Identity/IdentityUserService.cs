@@ -13,6 +13,7 @@ namespace E_Commerce_App.Services.Identity
         Task<UserDto> Register(RegisterData data, ModelStateDictionary modelState);
         Task<UserDto> Authenticate(LoginData data);
         Task<UserDto> GetUser(ClaimsPrincipal user);
+        Task SetProfileImage(ClaimsPrincipal user, string url);
     }
 
     public class IdentityUserService : IUserService
@@ -83,6 +84,21 @@ namespace E_Commerce_App.Services.Identity
             }
 
             return null;
+        }
+
+        public async Task SetProfileImage(ClaimsPrincipal principal, string url)
+        {
+            var user = await userManager.GetUserAsync(principal);
+
+            // Could add this to ApplicationUser
+            // user.ProfileUrl = url;
+            // await userManager.UpdateAsync(user);
+
+            var existingProfileUrls = principal.FindAll("ProfileUrl");
+            await userManager.RemoveClaimsAsync(user, existingProfileUrls);
+
+            await userManager.AddClaimAsync(user, new Claim("ProfileUrl", url));
+            await signInManager.RefreshSignInAsync(user);
         }
 
         private async Task<UserDto> CreateUserDto(IdentityUser user)
