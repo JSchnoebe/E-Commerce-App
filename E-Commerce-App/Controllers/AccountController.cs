@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using E_Commerce_App.Models.Identity;
 using E_Commerce_App.Services.Identity;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace E_Commerce_App.Controllers
@@ -12,10 +13,12 @@ namespace E_Commerce_App.Controllers
     public class AccountController : Controller
     {
         private readonly IUserService userService;
+        private readonly IFileUploadService fileUploadService;
 
-        public AccountController(IUserService userService)
+        public AccountController(IUserService userService, IFileUploadService fileUploadService)
         {
             this.userService = userService;
+            this.fileUploadService = fileUploadService;
         }
 
         [Authorize]
@@ -67,6 +70,13 @@ namespace E_Commerce_App.Controllers
             ModelState.AddModelError(nameof(LoginData.Password), "Email or Password was incorrect.");
 
             return View(data);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadProfile(IFormFile profileImage)
+        {
+            string url = await fileUploadService.Upload(profileImage);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

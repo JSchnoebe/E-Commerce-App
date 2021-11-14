@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DemoMvc.Services;
 using E_Commerce_App.Controllers;
 using E_Commerce_App.Data;
 using E_Commerce_App.Services.Identity;
@@ -44,6 +45,8 @@ namespace E_Commerce_App
             services.AddScoped<ICategoryRepository, DatabaseCategoryRepository>();
 
             services.AddScoped<IDashboardRepository, DashboardRepository>();
+
+            services.AddSingleton<IFileUploadService, JarenFileUploadService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
