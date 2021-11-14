@@ -59,6 +59,12 @@ namespace E_Commerce_App.Services.Identity
 
             if (result.Succeeded)
             {
+                if (data.Email.EndsWith("@newbo.co"))
+                    await userManager.AddToRoleAsync(user, "Administrator");
+
+                if (data.MakeMeAnEditor)
+                    await userManager.AddToRoleAsync(user, "Editor");
+
                 return await CreateUserDto(user);
             }
 

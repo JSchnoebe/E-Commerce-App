@@ -16,5 +16,7 @@ namespace E_Commerce_App.Models.Identity
         public string Password { get; set; }
 
         public bool AcceptedTerms { get; set; }
+
+        public bool MakeMeAnEditor { get; set; }
     }
 }
