@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using E_Commerce_App.Data;
 using E_Commerce_App.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace E_Commerce_App.Controllers
 {
@@ -118,8 +119,12 @@ namespace E_Commerce_App.Controllers
         }
 
         // GET: Categories/Delete/5
+        [Authorize(Roles = "Adminsitrator")]
         public async Task<IActionResult> Delete(int? id)
         {
+            if (!User.IsInRole("Administrator"))
+                //return Forbid();
+                return NotFound();
             if (id == null)
             {
                 return NotFound();
@@ -138,8 +143,12 @@ namespace E_Commerce_App.Controllers
         // POST: Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Adminsitrator")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (!User.IsInRole("Administrator"))
+                //return Forbid();
+                return NotFound();
             var category = await _context.Categories.FindAsync(id);
             _context.Categories.Remove(category);
             await _context.SaveChangesAsync();
