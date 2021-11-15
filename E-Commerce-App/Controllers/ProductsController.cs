@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using E_Commerce_App.Data;
 using E_Commerce_App.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace E_Commerce_App.Controllers
 {
@@ -155,6 +156,13 @@ namespace E_Commerce_App.Controllers
         private bool ProductExists(int id)
         {
             return _context.Products.Any(e => e.Id == id);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadProductImage(IFormFile productImage)
+        {
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }
