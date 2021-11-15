@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using DemoMvc.Services;
 using E_Commerce_App.Controllers;
 using E_Commerce_App.Data;
+using E_Commerce_App.Services;
 using E_Commerce_App.Services.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,6 +31,7 @@ namespace E_Commerce_App
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddRazorPages();
 
             services.AddDbContext<ECommerceDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -73,6 +75,8 @@ namespace E_Commerce_App
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapRazorPages();
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

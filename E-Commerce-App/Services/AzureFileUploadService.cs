@@ -3,6 +3,9 @@ using System.Threading.Tasks;
 using DemoMvc.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace E_Commerce_App.Services
 {
