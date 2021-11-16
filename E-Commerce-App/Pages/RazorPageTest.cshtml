@@ -1,0 +1,11 @@
+﻿@page "{name?}"
+@model E_Commerce_App.Pages.RazorPageTestModel
+@{
+}
+
+<h1>Razor Testing Here!</h1>
+@if (Model.Name != null)
+{
+    <p>Welcome, @Model.Name</p>
+}
+<a href="/">Go Home</a>

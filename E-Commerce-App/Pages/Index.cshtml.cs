@@ -15,7 +15,7 @@ namespace E_Commerce_App.Pages
 
         public void OnGet()
         {
-
+            PageGeneratedAt = DateTime.Now;
         }
     }
 }
