@@ -8,11 +8,14 @@ using Microsoft.EntityFrameworkCore;
 using E_Commerce_App.Data;
 using E_Commerce_App.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
+using DemoMvc.Services;
 
 namespace E_Commerce_App.Controllers
 {
     public class ProductsController : Controller
     {
+        private readonly IFileUploadService fileUploadService;
         private readonly ECommerceDbContext _context;
 
         public ProductsController(ECommerceDbContext context)
@@ -71,6 +74,7 @@ namespace E_Commerce_App.Controllers
         }
 
         // GET: Products/Edit/5
+        [Authorize(Roles = "Adminsitrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -92,6 +96,7 @@ namespace E_Commerce_App.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Adminsitrator")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,CategoryId")] Product product)
         {
             if (id != product.Id)
@@ -124,6 +129,7 @@ namespace E_Commerce_App.Controllers
         }
 
         // GET: Products/Delete/5
+        [Authorize(Roles = "Adminsitrator")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -145,6 +151,7 @@ namespace E_Commerce_App.Controllers
         // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Adminsitrator")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var product = await _context.Products.FindAsync(id);
@@ -161,7 +168,7 @@ namespace E_Commerce_App.Controllers
         [HttpPost]
         public async Task<IActionResult> UploadProductImage(IFormFile productImage)
         {
-
+            string url = await fileUploadService.Upload(productImage);
             return RedirectToAction(nameof(Index));
         }
     }

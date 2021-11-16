@@ -21,6 +21,7 @@
     <None Remove="Views\Account\" />
     <None Remove="Microsoft.WindowsAzure.ConfigurationManager" />
     <None Remove="WindowsAzure.Storage" />
+    <None Remove="Pages\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.12">
@@ -42,5 +43,6 @@
     <Folder Include="Models\Identity\" />
     <Folder Include="Services\Identity\" />
     <Folder Include="Views\Account\" />
+    <Folder Include="Pages\" />
   </ItemGroup>
 </Project>
