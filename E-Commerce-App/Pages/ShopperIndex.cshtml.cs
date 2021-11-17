@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DemoMvc.Services;
+using E_Commerce_App.Controllers;
 using E_Commerce_App.Data;
 using E_Commerce_App.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -16,15 +17,19 @@ namespace E_Commerce_App.Pages
         private readonly ECommerceDbContext _context;
         private readonly IFileUploadService fileUploadService;
 
-        public void OnGet()
+        ICategoryRepository categoryRepository;
+
+        public ShopperIndexModel(ICategoryRepository categoryRepository)
         {
+            this.categoryRepository = categoryRepository;
         }
 
-        public IList<Category> Category { get; set; }
+        public IList<Category> Categories { get; set; }
 
         public async Task OnGetAsync()
         {
-            Category = await _context.Categories.ToListAsync();
+            //Categories = await _context.Categories.ToListAsync();
+            Categories = await categoryRepository.GetAll();
         }
     }
 }
