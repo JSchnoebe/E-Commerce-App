@@ -1,12 +1,12 @@
 ﻿@page
 @model E_Commerce_App.Pages.IndexModel
 @{
-    Layout = "_Layout";
+    Layout = "_ShopperLayout";
 }
 
-<h1>This is Razor Pages!</h1>
+<h1>Hello Shopper!</h1>
 
 <p>Model type is @Model.GetType().FullName</p>
 <p>Page was generated at @Html.DisplayFor(model => model.PageGeneratedAt)</p>
 
-<a asp-page="ShopperIndex">Shop</a>
+<a asp-page="RazorPageTest">Razor Test Page!</a>
