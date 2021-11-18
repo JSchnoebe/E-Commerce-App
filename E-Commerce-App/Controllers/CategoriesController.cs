@@ -46,6 +46,7 @@ namespace E_Commerce_App.Controllers
         }
 
         // GET: Categories/Create
+        [Authorize(Roles = "Adminsitrator")]
         public IActionResult Create()
         {
             return View();
@@ -56,6 +57,7 @@ namespace E_Commerce_App.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Adminsitrator")]
         public async Task<IActionResult> Create([Bind("Id,Name")] Category category)
         {
             if (ModelState.IsValid)
@@ -68,6 +70,7 @@ namespace E_Commerce_App.Controllers
         }
 
         // GET: Categories/Edit/5
+        [Authorize(Roles = "Adminsitrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -88,6 +91,7 @@ namespace E_Commerce_App.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Adminsitrator")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Category category)
         {
             if (id != category.Id)
