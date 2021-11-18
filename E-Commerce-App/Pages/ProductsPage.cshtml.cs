@@ -17,9 +17,16 @@ namespace E_Commerce_App.Pages
 
         public IList<Product> Products { get; set; }
 
+        IProductRepository productRepository;
+
+        public ProductsPageModel(IProductRepository productRepository)
+        {
+            this.productRepository = productRepository;
+        }
+
         public async Task OnGetAsync()
         {
-            Products = await _context.Products.ToListAsync();
+            Products = await productRepository.GetAll();
         }
     }
 }
