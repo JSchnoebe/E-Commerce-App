@@ -1,0 +1,23 @@
+﻿@page
+
+@model E_Commerce_App.Pages.ProductsPageModel
+@{
+    Layout = "_ShopperLayout";
+}
+
+<h1>Shopping Cart</h1>
+
+<ul>
+    @foreach (var product in Model.Products)
+    {
+        <li>
+            <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">
+                @product.Name
+            </a>
+        </li>
+    }
+</ul>
+
+
+<a asp-page="RazorPageTest">Razor Test Page!</a>
+
