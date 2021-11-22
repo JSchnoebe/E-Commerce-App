@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>E_Commerce_App</RootNamespace>
+    <UserSecretsId>426a17b9-3054-45a1-a258-a3a169de8f57</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Microsoft.EntityFrameworkCore.Tools" />
+    <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
+    <None Remove="Data\" />
+    <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
+    <None Remove="Microsoft.EntityFrameworkCore.Sqlite" />
+    <None Remove="Services\" />
+    <None Remove="Views\Admin\" />
+    <None Remove="Views\Product\" />
+    <None Remove="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
+    <None Remove="Models\Identity\" />
+    <None Remove="Services\Identity\" />
+    <None Remove="Views\Account\" />
+    <None Remove="Microsoft.WindowsAzure.ConfigurationManager" />
+    <None Remove="WindowsAzure.Storage" />
+    <None Remove="Pages\" />
+    <None Remove="Pages\Shared\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.12">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.12" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.12" />
+    <PackageReference Include="Microsoft.WindowsAzure.ConfigurationManager" Version="3.2.3" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.3.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="Services\" />
+    <Folder Include="Views\Admin\" />
+    <Folder Include="Views\Product\" />
+    <Folder Include="Models\Identity\" />
+    <Folder Include="Services\Identity\" />
+    <Folder Include="Views\Account\" />
+    <Folder Include="Pages\" />
+    <Folder Include="Pages\Shared\" />
+  </ItemGroup>
+</Project>
