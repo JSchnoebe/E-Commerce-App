@@ -12,7 +12,7 @@
     @foreach (var category in Model.Categories)
     {
         <li>
-            <a asp-controller="Categories" asp-action="Details" asp-route-id="@category.Id">
+            <a asp-page="ProductsPage" asp-route-id="@category.Id">
                 @category.Name
             </a>
         </li>
@@ -20,4 +20,4 @@
 </ul>
 
 
-    <a asp-page="ProductsPage">Testing!!!!</a>
+    <a asp-page="ProductsPage">Products</a>
