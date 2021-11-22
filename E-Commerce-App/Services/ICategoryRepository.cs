@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using E_Commerce_App.Data;
 using E_Commerce_App.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace E_Commerce_App.Controllers
@@ -39,6 +40,24 @@ namespace E_Commerce_App.Controllers
                 .OrderByDescending(f => f.Id) // Sort newest to oldest
                 .Take(count)
                 .ToListAsync();
+        }
+
+        public async Task<Category> GetOne(int? id)
+        {
+            if (id == null)
+            {
+                return null;
+            }
+
+            var category = await _context.Categories
+                .Include(f => f.Products)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (category == null)
+            {
+                return null;
+            }
+
+            return category;
         }
     }
 }
