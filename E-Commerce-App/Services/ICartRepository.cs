@@ -9,6 +9,7 @@ namespace E_Commerce_App.Services
 {
     public interface ICartRepository
     {
+        Task<List<CartItem>> GetAll();
     }
 
     public class DatabaseCartRepository : ICartRepository

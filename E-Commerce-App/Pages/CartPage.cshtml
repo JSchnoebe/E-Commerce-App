@@ -1,20 +1,23 @@
 ﻿@page
 
-@model E_Commerce_App.Pages.ProductsPageModel
+@model E_Commerce_App.Pages.CartPageModel
 @{
     Layout = "_ShopperLayout";
 }
 
-<h1>Shopping Cart</h1>
+<h1>Categories</h1>
+
+<p>Happy Shopping!</p>
 
 <ul>
-    @foreach (var product in Model.Products)
+    @foreach (var cartItem in Model.CartItems)
     {
         <li>
-            <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">
-                @product.Name
-            </a>
+            @cartItem.Product
         </li>
     }
 </ul>
+
+
+<a asp-page="CartPage">Shopping Cart</a>
 

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using E_Commerce_App.Controllers;
+using E_Commerce_App.Data;
 using E_Commerce_App.Models;
+using E_Commerce_App.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -14,7 +16,11 @@ namespace E_Commerce_App.Pages
 
         public Category Category { get; set; }
 
+        public CartItem CartItem { get; set; }
+
         ICategoryRepository categoryRepository;
+
+        ICartRepository cartRepository;
 
         public CategoriesDetailPageModel(ICategoryRepository categoryRepository)
         {
@@ -31,5 +37,9 @@ namespace E_Commerce_App.Pages
 
             return Page();
         }
+
+        //public async Task<IActionResult> AddProductToCart(int? id)
+        //{
+        //}
     }
 }
