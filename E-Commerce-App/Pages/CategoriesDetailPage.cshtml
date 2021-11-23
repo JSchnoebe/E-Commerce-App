@@ -1,0 +1,22 @@
+﻿@page
+
+@model E_Commerce_App.Pages.CategoriesDetailPageModel
+@{
+    Layout = "_ShopperLayout";
+}
+
+<h1>Categories</h1>
+
+<p>Happy Shopping!</p>
+
+<ul>
+    @foreach (var product in Model.Category.Products)
+    {
+        <li>
+            @product.Name
+        </li>
+    }
+</ul>
+
+
+<a asp-page="CartPage">Shopping Cart</a>

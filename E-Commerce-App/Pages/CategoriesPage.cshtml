@@ -1,12 +1,13 @@
-﻿@page 
-@model E_Commerce_App.Pages.ShopperIndexModel
+﻿@page
+
+@model E_Commerce_App.Pages.CategoriesPageModel
 @{
     Layout = "_ShopperLayout";
 }
 
-<h1>Hello Shopper!</h1>
+<h1>Categories</h1>
 
-<p>Select a category to start shopping!</p>
+<p>Happy Shopping!</p>
 
 <ul>
     @foreach (var category in Model.Categories)
@@ -20,4 +21,4 @@
 </ul>
 
 
-    <a asp-page="CartPage">Shopping Cart</a>
+<a asp-page="CartPage">Shopping Cart</a>

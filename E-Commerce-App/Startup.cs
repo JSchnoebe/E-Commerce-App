@@ -48,6 +48,8 @@ namespace E_Commerce_App
 
             services.AddScoped<IProductRepository, DatabaseProductRepository>();
 
+            services.AddScoped<ICartRepository, DatabaseCartRepository>();
+
             services.AddScoped<IDashboardRepository, DashboardRepository>();
 
             services.AddSingleton<IFileUploadService, AzureFileUploadService>();
