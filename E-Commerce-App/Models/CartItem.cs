@@ -3,8 +3,8 @@ namespace E_Commerce_App.Models
 {
     public class CartItem
     {
-        public CartItem()
-        {
-        }
+        public int Count { get; set; }
+
+        public int ProductId { get; set; }
     }
 }
