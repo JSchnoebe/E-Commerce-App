@@ -12,6 +12,7 @@ namespace E_Commerce_App.Controllers
     {
         Task<List<Category>> GetAll();
         Task<List<Category>> GetNew(int count);
+        Task<Category> GetOne(int? id);
     }
 
     public class DatabaseCategoryRepository : ICategoryRepository
