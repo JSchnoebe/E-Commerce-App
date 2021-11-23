@@ -20,9 +20,9 @@ namespace E_Commerce_App.Services
             _context = context;
         }
 
-        public async Task<List<Product>> GetAll()
+        public async Task<List<CartItem>> GetAll()
         {
-            return await _context.Products.ToListAsync();
+            return await _context.CartItems.ToListAsync();
         }
     }
 }
