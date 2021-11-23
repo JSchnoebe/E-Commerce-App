@@ -5,19 +5,20 @@
     Layout = "_ShopperLayout";
 }
 
-<h1>Categories</h1>
+<h1>Sopping Cart</h1>
 
-<p>Happy Shopping!</p>
+<p>Your Items</p>
 
 <ul>
     @foreach (var cartItem in Model.CartItems)
     {
         <li>
-            @cartItem.Product
+            @cartItem.Product.Name
+            @cartItem.Product.Price
         </li>
     }
 </ul>
 
 
-<a asp-page="CartPage">Shopping Cart</a>
+<a asp-page="Index">Go Home</a>
 

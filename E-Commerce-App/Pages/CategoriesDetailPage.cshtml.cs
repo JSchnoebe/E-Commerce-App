@@ -20,8 +20,6 @@ namespace E_Commerce_App.Pages
 
         ICategoryRepository categoryRepository;
 
-        ICartRepository cartRepository;
-
         public CategoriesDetailPageModel(ICategoryRepository categoryRepository)
         {
             this.categoryRepository = categoryRepository;
@@ -37,9 +35,5 @@ namespace E_Commerce_App.Pages
 
             return Page();
         }
-
-        //public async Task<IActionResult> AddProductToCart(int? id)
-        //{
-        //}
     }
 }
