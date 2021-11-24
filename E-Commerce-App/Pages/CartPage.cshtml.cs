@@ -15,7 +15,7 @@ namespace E_Commerce_App.Pages
 
         ICartRepository cartRepository;
 
-        public IList<CartItem> CartItems;
+        public List<CartItem> CartItems;
 
         public decimal Total { get; set; }
 
@@ -30,7 +30,7 @@ namespace E_Commerce_App.Pages
             Total = CartItems.Sum(i => i.Product.Price * i.Quantity);
         }
 
-        public IActionResult OnGetBuyNow(string id)
+        public IActionResult OnGetBuyNow(int id)
         {
             var productModel = new Product();
             CartItems = SessionHelper.GetObjectFromJson<List<CartItem>>(HttpContext.Session, "cart");

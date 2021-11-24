@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace E_Commerce_App.Models
 {
     public class Product
     {
+        private List<Product> Products;
+
         public int Id { get; set; }
 
         [Display(Name = "Product Name")]
@@ -20,5 +24,15 @@ namespace E_Commerce_App.Models
         public int CategoryId { get; set; }
 
         public Category Category { get; set; }
+
+        public List<Product> findAll()
+        {
+            return Products;
+        }
+
+        public Product find(int id)
+        {
+            return Products.Where(p => p.Id == id).FirstOrDefault();
+        }
     }
 }
